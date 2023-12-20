@@ -1,0 +1,12 @@
+{% extends 'layouts/index.html' %}
+
+{% block content %}
+    <h1>
+        Hashtags
+    </h1>
+
+    {% for hashtag in hashtags %}
+        <a href="#" class="btn btn-primary">#{{ hashtag.title }}</a>
+    {% endfor %}
+
+{% endblock %}
