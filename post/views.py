@@ -1,13 +1,15 @@
-from django.shortcuts import HttpResponse, render
+from django.http import HttpResponse
+from datetime import datetime
 
-# CBV - Class Based View
-# FBV - Function Based View
 
 def hello_view(request):
-    if request.method == 'GET':
-        return render(request, 'index.html')
-    
+    return HttpResponse("Hello! Its my project")
 
-def test_view(request):
-    if request.method == 'GET':
-        return HttpResponse('TEST VIEW')
+
+def current_date_view(request):
+    now = datetime.now()
+    return HttpResponse(now)
+
+
+def goodby_view(request):
+    return HttpResponse("Goodby user!")
