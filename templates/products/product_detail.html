@@ -6,7 +6,7 @@
     <p>{{ product.content }}</p>
     <img src="/media/{{ product.image }}" width="500">
     {% for hashtag in product.hashtags.all %}
-    <a href="#" class="btn btn-primary">#{{ hashtag }}</a>
+    <p><a href="#" class="btn btn-primary">#{{ hashtag }}</a></p>
     {% endfor %}
     <h2>Dates:</h2>
     <p>Created: {{ product.created_at }}</p>

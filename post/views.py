@@ -11,6 +11,7 @@ def main_view(request):
 
 def products_view(request):
     if request.method == 'GET':
+        print(request.user)
         products = Product.objects.all()
         context = {
             "products": products,
