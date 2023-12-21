@@ -7,12 +7,20 @@ class Category(models.Model):
     def __str__(self):
         return self.title
 
+    class Meta:
+        verbose_name = "Категория"
+        verbose_name_plural = "Категории"
+
 
 class HashTag(models.Model):
     title = models.CharField(max_length=255)
 
     def __str__(self):
         return self.title
+
+    class Meta:
+        verbose_name = "Хештег"
+        verbose_name_plural = "Хештеги"
 
 
 class Product(models.Model):
@@ -23,13 +31,21 @@ class Product(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     hashtags = models.ManyToManyField(HashTag, blank=True, related_name='products')
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='products')
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, blank=True, null=True, related_name='products')
 
     def __str__(self):
         return self.title
 
+    class Meta:
+        verbose_name = "Продукт"
+        verbose_name_plural = "Продукты"
+
 
 class Comment(models.Model):
-    post = models.ForeignKey('post.Product', on_delete=models.CASCADE, related_name='comments')
+    product = models.ForeignKey('post.Product', on_delete=models.CASCADE, related_name='comments')
     text = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = "Коментарии"
+        verbose_name_plural = "Коментарий"
