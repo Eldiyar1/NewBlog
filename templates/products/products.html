@@ -2,21 +2,19 @@
 
 {% block content %}
     <h1>
-        Posts
+        Products
     </h1>
-
     {% for product in products %}
         <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
+            <img src="/media/{{ product.image }}" class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title">{{ product.title }}</h5>
                 <p class="card-text">{{ product.rate }}</p>
                 {% for hashtag in product.hashtags.all %}
                     <a href="#" class="btn btn-primary">#{{ hashtag.title }}</a>
                 {% endfor %}
-                <a href="#" class="btn btn-primary">More</a>
+                <a href="/product/{{ product.id }}/" class="btn btn-primary">More</a>
             </div>
         </div>
     {% endfor %}
-
 {% endblock %}
