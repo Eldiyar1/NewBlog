@@ -17,6 +17,9 @@
         <p>{{ comment.text }}</p>
     {% endfor %}
 
+
+    <a href="update/">Update</a>
+
     <div class="create_comment">
         <form action="" method="post" enctype="multipart/form-data">
             {% csrf_token %}

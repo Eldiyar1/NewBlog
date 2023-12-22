@@ -4,17 +4,28 @@
     <h1>
         Products
     </h1>
-    {% for product in products %}
-        <div class="card" style="width: 18rem;">
-            <img src="/media/{{ product.image }}" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">{{ product.title }}</h5>
-                <p class="card-text">{{ product.rate }}</p>
-                {% for hashtag in product.hashtags.all %}
-                    <a href="#" class="btn btn-primary">#{{ hashtag.title }}</a>
-                {% endfor %}
-                <a href="/product/{{ product.id }}/" class="btn btn-primary">More</a>
+    <form action="/products/" method="GET">
+        <input type="text" name="search" placeholder="Search">
+        <input type="submit" value="Search">
+    </form>
+
+    <a href="?order=title" method="GET">Title</a>
+    <a href="?order=-title" method="GET">-Title</a>
+    <a href="?order=created_at" method="GET">Date</a>
+    <a href="?order=-created_at" method="GET">-Date</a>
+
+
+        {% for product in products %}
+            <div class="card" style="width: 18rem;">
+                <img src="/media/{{ product.image }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{ product.title }}</h5>
+                    <p class="card-text">{{ product.rate }}</p>
+                    {% for hashtag in product.hashtags.all %}
+                        <a href="#" class="btn btn-primary">#{{ hashtag.title }}</a>
+                    {% endfor %}
+                    <a href="/products/{{ product.id }}/" class="btn btn-primary">More</a>
+                </div>
             </div>
-        </div>
-    {% endfor %}
+        {% endfor %}
 {% endblock %}
