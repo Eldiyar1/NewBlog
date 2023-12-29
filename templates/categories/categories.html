@@ -1,12 +1,21 @@
 {% extends 'layouts/index.html' %}
 
+{#{% block content %}#}
+{#    <h1>Categories</h1>#}
+{#    <ul>#}
+{#        {% for category in categories %}#}
+{#            <p><a href="#" class="btn btn-primary">{{ category.title }}</a></p>#}
+{#            {% for product in category.products.all %}#}
+{#                <p>{{ product.title }}</p>#}
+{#            {% endfor %}#}
+{#        {% endfor %}#}
+{#{% endblock %}#}
+
 {% block content %}
     <h1>Categories</h1>
     <ul>
         {% for category in categories %}
-            <p><a href="#" class="btn btn-primary">{{ category.title }}</a></p>
-            {% for product in category.products.all %}
-                <p>{{ product.title }}</p>
-            {% endfor %}
+            <p><a href="{% url 'category_products' category.id %}" class="btn btn-primary">{{ category.title }}</a></p>
         {% endfor %}
+    </ul>
 {% endblock %}

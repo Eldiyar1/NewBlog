@@ -1,9 +1,19 @@
 from django.db.models import Q
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 
 from blog import settings
 from .forms import ProductCreateForm, ProductCreateForm2, CommentCreateForm, CategoryCreateForm
 from .models import Product, HashTag, Category, Comment
+
+
+def category_products_view(request, category_id):
+    category = get_object_or_404(Category, id=category_id)
+    products = category.products.all()
+    context = {
+        'category': category,
+        'products': products,
+    }
+    return render(request, 'categories/category_products.html', context)
 
 
 def main_view(request):
